@@ -40,6 +40,15 @@
 
       </div>
 
+      <div class="artist-container">
+        <div>Artists</div>
+        <multiselect
+            multiple
+            label="name"
+            v-model="form.artists"
+            :options="artists"></multiselect>
+      </div>
+
       <div class="playlist-container">
         <b-form-group
             class="playlist-container"
@@ -74,8 +83,11 @@
 </template>
 
 <script>
+// Components
+import Multiselect from 'vue-multiselect'
 
 // Mixins
+import {ArtistRest} from "../../mixins/Artist";
 import {PeopleRest} from "../../mixins/People";
 import {PlaylistRest} from "../../mixins/Playlist";
 import {SongsRest} from "../../mixins/Songs";
@@ -86,13 +98,18 @@ import {Songs} from "../../models/Songs";
 
 export default {
   name: 'SongForm',
+  components: {
+    Multiselect
+  },
   mixins: [
+    ArtistRest,
     PeopleRest,
     PlaylistRest,
     SongsRest,
   ],
   data() {
     return {
+      artists: [],
       people: [],
       playlist: [],
       form: new Songs(),
@@ -100,6 +117,14 @@ export default {
     }
   },
   created() {
+    this.getArtist(response => {
+      this.artists = response.map(t => {
+        return {
+          id: t.id,
+          name: t.name
+        }
+      });
+    });
     this.getPeople(response => this.people = response);
     this.getPlaylist(response => this.playlist = response);
   },

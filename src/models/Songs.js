@@ -5,6 +5,7 @@ export class Songs {
   saved = false;
   spotify_pc = 0;
   spotify_lap = 0;
+  artists = [];
   playlists = [];
   people = [];
 }
