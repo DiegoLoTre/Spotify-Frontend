@@ -1,12 +1,13 @@
 import Index from '../views/Songs/Index.vue'
 import Form from '../views/Songs/Form.vue'
+import {url} from "../menu/song";
 
 export default [{
-  path: '/songs',
+  path: url + '',
   name: 'Songs',
   component: Index
 }, {
-  path: '/songs/form',
+  path: url + '/form',
   name: 'Songs Form',
   component: Form
 }]

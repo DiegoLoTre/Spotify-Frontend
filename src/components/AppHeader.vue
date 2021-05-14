@@ -4,6 +4,8 @@
       <li class="nav-item" v-for="item in menu" :key="item.id">
         <ul v-if="item.subItems">
 
+          {{ item.title }}
+
           <li class="nav-subitem" v-for="subItem in item.subItems" :key="subItem.id">
             <router-link :to="subItem.href">
               {{ subItem.title }}
@@ -20,6 +22,11 @@
 </template>
 
 <script>
+import {ArtistMenu} from '../menu/artist'
+import {PersonMenu} from '../menu/person'
+import {PlaylistMenu} from '../menu/playlist'
+import {SongMenu} from '../menu/song'
+
 export default {
   name: 'AppHeader',
   data() {
@@ -27,16 +34,12 @@ export default {
       menu: [{
         title: 'Home',
         href: '/',
-      }, {
-        title: 'Canciones',
-        subItems: [{
-          title: 'Ver Canciones',
-          href: '/songs',
-        }, {
-          title: 'Agregar Nuevas Canciones',
-          href: '/songs/form',
-        }]
-      }]
+      },
+        SongMenu,
+        ArtistMenu,
+        PersonMenu,
+        PlaylistMenu,
+      ]
     }
   }
 }
