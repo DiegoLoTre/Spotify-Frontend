@@ -3,8 +3,8 @@ export class Songs {
   spotify_url = '';
   liked = false;
   saved = false;
-  spotify_pc = 0;
-  spotify_lap = 0;
+  spotify = 0;
+  lastfm = 0;
   artists = [];
   playlists = [];
   people = [];

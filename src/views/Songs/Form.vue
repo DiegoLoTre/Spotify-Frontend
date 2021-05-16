@@ -11,7 +11,7 @@
     </div>
 
     <b-form
-        @submit="submitForm">
+        @submit.prevent="submitForm">
       <div class="song-form-container">
 
         <b-form-group label="Nombre">
@@ -30,12 +30,12 @@
           <b-form-checkbox v-model="form.saved"/>
         </b-form-group>
 
-        <b-form-group label="Spotify PC">
-          <b-form-input type="number" min="0" v-model="form.spotify_pc"/>
+        <b-form-group label="Spotify">
+          <b-form-input type="number" min="0" v-model="form.spotify"/>
         </b-form-group>
 
-        <b-form-group label="Spotify Lap">
-          <b-form-input type="number" min="0" v-model="form.spotify_lap"/>
+        <b-form-group label="Lastfm">
+          <b-form-input type="number" min="0" v-model="form.lastfm"/>
         </b-form-group>
 
       </div>
